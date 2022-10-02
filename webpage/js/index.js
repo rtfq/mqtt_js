@@ -3,12 +3,39 @@ var reconnectTimeout = 5000;
 var host= "raspberrypi.local";
 var port=9001;
 var count = 0;
+var render_flag = false;
 
 
+function renderChart(data) {
+  console.log("Rendering chart...");
+  console.log(data.time);
+  console.log(data.temp);
+
+  Plotly.newPlot('chart', [{
+    x: [data.time],
+    y: [0],
+    type: 'line'
+  }], {
+    displaylogo: false
+  });
+  render_flag = false;
+  console.log("Rendering chart complete");
+}
+
+function updateGraph(data) {
+  //console.log(data.time);
+  //console.log(data.temp);
+  Plotly.extendTraces('chart', {
+    x: [[data.time]],
+    y: [[data.temp]]
+  }, [0]);
+}
+  
 
 function onConnect() {
     // Once a connection has been made, make a subscription and send a message.
-    console.log("Connected ");
+    console.log("Connected");
+    render_flag = true;
     mqtt.subscribe("test/data");
 }
 
@@ -18,9 +45,16 @@ function onFailure (message) {
 }
 
 function onMessageArrived (msg) {
-    let temp = JSON.parse(msg.payloadString);
-    console.log(JSON.parse(msg.payloadString));
-    updateGraph(temp);
+    let data = JSON.parse(msg.payloadString);
+    //console.log(data.time);
+    //console.log(data.temp);
+
+    if (render_flag) {
+      renderChart(data);
+    } else {
+      updateGraph(data);
+    }
+    
 }
 
 function MQTTconnect() {
@@ -37,11 +71,3 @@ function MQTTconnect() {
     mqtt.connect(options); //connect
 }
 
-  function updateGraph(temp) {
-    Plotly.extendTraces('chart', {
-      x: [[count]],
-      y: [[temp.temp]]
-    }, [0]);
-    count ++;
-  }
-  
