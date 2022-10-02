@@ -64,15 +64,9 @@ sudo systemctl start test_data.service
 # :memo: ToDo and Improvements #
 - Add MQTT Broker setup information
 - Increase example base:
-  - A Flask example: a full stack webapp with MQTT feeds fed to frontend through API's
+  - Better example dashboard: A full stack webapp with MQTT feeds fed to frontend through API's, possibly React based?
+  - Database : Setup a logging feature to save the data to a database (could be local or cloud based)
   - Remote (cloud service) example: Publish or subscribe to data from a cloud broker
   - MQTT in depth: Explore some more intricate uses of MQTT with Authentication, Quality Of Service ("QoS"), Last Will & Testament(LWT) and Retain Message features.
-
-
-
-
-
-
-
 
 <a href="#top">Back to top</a>
