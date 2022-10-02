@@ -41,13 +41,13 @@ mqtt_topic = "test/data"
 - `on_message` callback is set to update the Plotly graph on the webpage
 
 
-# :dart: Requirements #
+# :white_check_mark: Requirements #
 
 python packages listed in `requirements.txt`
 
 An MQTT broker must be setup on one of the machines and the matching details set in the examples.
 
-# :dart: Installation #
+# :rocket: Installation #
 
 ```
 # To be run on RPi for data generating service
@@ -60,6 +60,14 @@ sudo systemctl enable test_data.service
 sudo systemctl start test_data.service
 
 ```
+
+# :memo: ToDo and Improvements #
+- Add MQTT Broker setup information
+- Increase example base:
+  - A Flask example: a full stack webapp with MQTT feeds fed to frontend through API's
+  - Remote (cloud service) example: Publish or subscribe to data from a cloud broker
+  - MQTT in depth: Explore some more intricate uses of MQTT with Authentication, Quality Of Service ("QoS"), Last Will & Testament(LWT) and Retain Message features.
+
 
 
 
