@@ -1,0 +1,12 @@
+[Unit]
+Description=CPU temp provider
+#After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/home/rpi-first-boot-wizard/Documents/mqtt_testing
+ExecStart=/usr/bin/python3 test_publish.py
+
+[Install]
+WantedBy=multi-user.target
+
