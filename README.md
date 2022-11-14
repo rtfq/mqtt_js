@@ -11,7 +11,9 @@
 
 # :dart: About #
 
-A repostiory to hold a few MQTT examples, including generating data and displaying it on a webpage.
+Dealing with MQTT in raw JS.
+
+This repostiory holds a few MQTT examples, including generating data and displaying it on a webpage.
 
 ### MQTT Example with 2 component parts:
 
